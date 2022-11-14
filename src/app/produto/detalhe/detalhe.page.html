@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+   
+      <ion-title color="warning"><ion-button shape="round" size="small" color="tertiary"  fill="outline" routerLink="/lista/">
+        <ion-icon slot="icon-only" name="caret-back-outline" color=""></ion-icon>
+      </ion-button>ㅤㅤ𝕕𝕖𝕥𝕒𝕝𝕙𝕖𝕤</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+
+  <ion-item  *ngIf="!modoDeEdicao" id="nomecor">Nome:{{todosProdutos.nome}}</ion-item>
+  <ion-item  *ngIf="!modoDeEdicao" id="numerocor">Quantidade:{{todosProdutos.quantidade}}</ion-item>
+  <ion-item  *ngIf="!modoDeEdicao" id="numerocor">R$ {{todosProdutos.preco}}</ion-item>
+
+
+
+
+
+  <ion-button fill="outline" color="tertiary" size="small" shape="round" expand="full" *ngIf="!modoDeEdicao" (click)="iniciarEdicao()">Alterar Produto</ion-button>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" >
+    <ion-fab-button color="tertiary" (click)="presentAlert()" *ngIf="!modoDeEdicao" ><ion-icon name="trash-sharp"></ion-icon></ion-fab-button>
+  </ion-fab>
+
+  <form *ngIf="modoDeEdicao" (ngSubmit)="encerrarEdicao()" [formGroup]="formulario" #form="ngForm">
+    <ion-item>
+    <ion-label color="tertiary" position="floating" >Nome:</ion-label>
+    <ion-input [(ngModel)]="todosProdutos.nome" formControlName="nome"></ion-input>
+    </ion-item>
+    <ion-item>
+    <ion-label color="tertiary" position="floating" >Quantidade:</ion-label>
+    <ion-input [(ngModel)]="todosProdutos.quantidade" formControlName="quantidade"></ion-input>
+    </ion-item>
+    <ion-item>
+    <ion-label color="tertiary" position="floating" >R$ </ion-label>
+    <ion-input [(ngModel)]="todosProdutos.preco" formControlName="preco"></ion-input>
+    </ion-item>
+
+    <ion-button type="submit" fill="outline" color="tertiary"  size="small" shape="round" routerLink="/lista/">Salvar</ion-button>
+  </form>
+</ion-content>
+
+

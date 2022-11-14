@@ -1,0 +1,7 @@
+{
+  "name": "telefonica",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
